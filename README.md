@@ -1,157 +1,157 @@
-# Operationalize Machine Learning with Amazon SageMaker MLOps and MLFlow: 
+# Amazon SageMaker MLOps와 MLFlow를 활용한 머신러닝 운영화
 
-This repository contains a sequence of notebooks demonstrating how to build, train, and operationalize ML projects using [Amazon SageMaker](https://aws.amazon.com/sagemaker).
+이 저장소는 Amazon SageMaker를 사용하여 ML 프로젝트를 구축, 훈련 및 운영하는 방법을 보여주는 일련의 노트북을 포함하고 있습니다.
 
-The workshop makes use of [SageMaker Studio](https://aws.amazon.com/sagemaker/studio/) for ML development environment. It also leverages SageMaker [Data Wrangler](https://aws.amazon.com/sagemaker/data-wrangler/) and [training](https://docs.aws.amazon.com/sagemaker/latest/dg/train-model.html) jobs, and SageMaker MLOps features such as [SageMaker Pipelines](https://aws.amazon.com/sagemaker/pipelines/), [SageMaker Feature Store](https://aws.amazon.com/sagemaker/feature-store/), [SageMaker Model Registry](https://docs.aws.amazon.com/sagemaker/latest/dg/model-registry.html), [SageMaker managed MLflow experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow.html).
+이 워크샵은 ML 개발 환경으로 SageMaker Studio를 사용합니다. 또한 SageMaker Data Wrangler와 훈련 작업, 그리고 SageMaker Pipelines, SageMaker Feature Store, SageMaker Model Registry, SageMaker 관리형 MLflow 실험과 같은 SageMaker MLOps 기능을 활용합니다.
 
-You start with hands on exeprience with feature engineering using SageMaker data wrangler, and notebooks for processing and model training. Each subsequent notebook builds on top of the previous and introduces one or several SageMaker MLOps features:
+SageMaker Data Wrangler를 사용한 피처 엔지니어링과 처리 및 모델 훈련을 위한 노트북으로 실습을 시작합니다. 이후 각 노트북은 이전 노트북을 기반으로 하나 이상의 SageMaker MLOps 기능을 소개합니다:
 
 ![](img/SageMaker-MLOps-Pipeline.jpg)
 
-Each notebook also provides links to useful hands-on resources and proposes real-world ideas for additional development.
+각 노트북은 유용한 실습 리소스 링크를 제공하고 추가 개발을 위한 실제 아이디어를 제안합니다.
 
-You follow along the steps and develop an ML project from development to production-ready following the recommended MLOps practices:
+단계를 따라가며 권장 MLOps 사례에 따라 개발에서 프로덕션 준비 단계까지 ML 프로젝트를 개발합니다:
 
 ![](img/sagemaker-mlops-diagram.jpg)
 
-## Additional topics
-There are also additional hands-on examples of other SageMaker features and ML topics, like [A/B testing](https://docs.aws.amazon.com/sagemaker/latest/dg/model-validation.html), custom [processing](https://docs.aws.amazon.com/sagemaker/latest/dg/build-your-own-processing-container.html), [training](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-training-algo.html) and [inference](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-main.html) containers, [debugging and profiling](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html), [security](https://docs.aws.amazon.com/sagemaker/latest/dg/security.html), [multi-model](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-model-endpoints.html) and [multi-container](https://docs.aws.amazon.com/sagemaker/latest/dg/multi-container-endpoints.html) endpoints, and [serial inference pipelines](https://docs.aws.amazon.com/sagemaker/latest/dg/inference-pipelines.html). Explore the notebooks in the folder `additional-topics` to test out these features.
+## 추가 주제
+A/B 테스팅, 커스텀 처리, 훈련 및 추론 컨테이너, 디버깅 및 프로파일링, 보안, 멀티 모델 및 멀티 컨테이너 엔드포인트, 직렬 추론 파이프라인과 같은 다른 SageMaker 기능 및 ML 주제에 대한 추가 실습 예제도 있습니다. `additional-topics` 폴더의 노트북을 탐색하여 이러한 기능을 테스트해 보세요.
 
-## Getting started
-For the full version of the instructions and detailed setup of the account refer to the public AWS workshop [Amazon SageMaker MLOps: from idea to production in six steps](https://studio.us-east-1.prod.workshops.aws/preview/b9405337-9690-4fb2-9f7d-76e6babb7a2c/builds/4a85b866-016f-4d24-b95d-3627e7b5f0ae/en-US).
+## 시작하기
+전체 지침과 계정의 상세 설정은 공개 AWS 워크샵 Amazon SageMaker MLOps: 아이디어에서 프로덕션까지 6단계를 참조하세요.
 
-### Prerequisites
-You need an **AWS account**. If you don't already have an account, follow the [Setting Up Your AWS Environment](https://aws.amazon.com/getting-started/guides/setup-environment/) getting started guide for a quick overview.
+### 사전 요구 사항
+AWS 계정이 필요합니다. 아직 계정이 없다면 AWS 환경 설정 시작 가이드를 참조하여 빠른 개요를 확인하세요.
 
-### AWS Instructor-led workshop
-If you participating in an AWS Immersion Day or a similar instructor-led event and would like to use a provided AWS account, please follow this [instructions](https://studio.us-east-1.prod.workshops.aws/preview/b9405337-9690-4fb2-9f7d-76e6babb7a2c/builds/4a85b866-016f-4d24-b95d-3627e7b5f0ae/en-US/00-introduction/20-getting-started-workshop-studio) how to claim your temporary AWS account and how to start SageMaker Studio. 
+### AWS 강사 주도 워크샵
+AWS Immersion Day 또는 유사한 강사 주도 이벤트에 참여하고 제공된 AWS 계정을 사용하려면 임시 AWS 계정을 요청하고 SageMaker Studio를 시작하는 방법에 대한 지침을 따르세요.
 
-❗ Skip the following steps **Set up Amazon SageMaker domain** and **Deploy CloudFormation template** if you use an AWS-provisioned account.
+❗ 제공된 AWS 계정을 사용하는 경우 다음 단계인 Amazon SageMaker 도메인 설정과 CloudFormation 템플릿 배포를 건너뛰세요.
 
-### Set up Amazon SageMaker domain
-To run the notebooks you must use [SageMaker Studio](https://aws.amazon.com/sagemaker/studio/) which requires a [SageMaker domain](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-entity-status.html).
+### Amazon SageMaker 도메인 설정
+노트북을 실행하려면 SageMaker 도메인이 필요한 SageMaker Studio를 사용해야 합니다.
 
-#### Existing SageMaker domain
-If you already have a SageMaker domain and would like to use it to run the workshop, follow the [SageMaker Studio setup guide](https://aws.amazon.com/getting-started/hands-on/machine-learning-tutorial-set-up-sagemaker-studio-account-permissions/) to attach the required AWS IAM policies to the IAM execution role used by your Studio user profile. For this workshop you must attach the following managed IAM policies to the IAM execution role of the user profile you use to run the workshop:
+#### 기존 SageMaker 도메인
+이미 SageMaker 도메인이 있고 워크샵을 실행하는 데 사용하려면 SageMaker Studio 설정 가이드를 따라 Studio 사용자 프로필에서 사용하는 IAM 실행 역할에 필요한 AWS IAM 정책을 연결하세요. 이 워크샵에서는 워크샵을 실행하는 데 사용하는 사용자 프로필의 IAM 실행 역할에 다음 관리형 IAM 정책을 연결해야 합니다:
 - `AmazonSageMakerFullAccess`
 - `AWSCloudFormationFullAccess`
 - `AWSCodePipeline_FullAccess`
 - `AmazonSageMakerPipelinesIntegrations`
 
-You can also [create a new user profile](https://docs.aws.amazon.com/sagemaker/latest/dg/domain-user-profile-add-remove.html) with a dedicated IAM execution role to use for this workshop.
+이 워크샵에 사용할 전용 IAM 실행 역할이 있는 새 사용자 프로필을 생성할 수도 있습니다.
 
-#### Provision a new SageMaker domain
-If you don't have a SageMaker domain or would like to use a dedicated domain for the workshop, you must create a new domain.
+#### 새 SageMaker 도메인 프로비저닝
+SageMaker 도메인이 없거나 워크샵 전용 도메인을 사용하려면 새 도메인을 생성해야 합니다.
 
-❗ If you have more than one domain in your account, consider the limit of the active domains in a Region in an account.
+❗ 계정에 둘 이상의 도메인이 있는 경우 계정의 리전당 활성 도메인 제한을 고려하세요.
 
-To create a new domain, you can follow the onboarding [instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/onboard-quick-start.html) in the Developer Guide or use the provided AWS CloudFormation [template](https://github.com/aws-samples/mlops-sagemaker-mlflow/blob/master/cfn-templates/sagemaker-domain.yaml) that creates a SageMaker domain, a user profile, and adds the IAM roles required for executing the provided notebooks.
+새 도메인을 생성하려면 개발자 가이드의 온보딩 지침을 따르거나 SageMaker 도메인, 사용자 프로필을 생성하고 제공된 노트북 실행에 필요한 IAM 역할을 추가하는 제공된 AWS CloudFormation 템플릿을 사용할 수 있습니다.
 
-❗ If you create a new domain via AWS Console, make sure you attach the following policies to the IAM execution role of the user profile:
+❗ AWS 콘솔을 통해 새 도메인을 생성하는 경우 사용자 프로필의 IAM 실행 역할에 다음 정책을 연결해야 합니다:
 - `AmazonSageMakerFullAccess`
 - `AWSCloudFormationFullAccess`
 - `AWSCodePipeline_FullAccess`
 - `AmazonSageMakerPipelinesIntegrations`
 
-❗ If you use the provided CloudFormation template for domain creation, the template creates an IAM execution role with the following policies attached:
+❗ 도메인 생성을 위해 제공된 CloudFormation 템플릿을 사용하는 경우 템플릿은 다음 정책이 연결된 IAM 실행 역할을 생성합니다:
 - `AmazonSageMakerFullAccess`
 - `AmazonS3FullAccess`
 - `AWSCloudFormationFullAccess`
 - `AWSCodePipeline_FullAccess`
 - `AmazonSageMakerPipelinesIntegrations`
 
-Download the [`sagemaker-domain.yaml` CloudFormation template](https://github.com/aws-samples/mlops-sagemaker-mlflow/blob/master/cfn-templates/sagemaker-domain.yaml).
+`sagemaker-domain.yaml` CloudFormation 템플릿을 다운로드하세요.
 
-This template creates a new SageMaker domain and a user profile named `studio-user-<UUID>`. It also creates the required IAM execution role for the domain. 
+이 템플릿은 새 SageMaker 도메인과 `studio-user-<UUID>`라는 사용자 프로필을 생성합니다. 또한 도메인에 필요한 IAM 실행 역할을 생성합니다.
 
-❗ This stack assumes that you already have a public VPC set up in your account. If you do not have a public VPC, see [VPC with a single public subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario1.html) to learn how to create a public VPC. 
+❗ 이 스택은 계정에 이미 퍼블릭 VPC가 설정되어 있다고 가정합니다. 퍼블릭 VPC가 없는 경우 단일 퍼블릭 서브넷이 있는 VPC를 참조하여 퍼블릭 VPC를 생성하는 방법을 알아보세요.
 
-❗ The template supports only `us-east-1`, `us-west-2`, and `eu-central-1` Regions. Select one of those regions for deployment.
+❗ 템플릿은 `us-east-1`, `us-west-2`, `eu-central-1` 리전만 지원합니다. 배포를 위해 해당 리전 중 하나를 선택하세요.
 
-Open [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create). The link opens the AWS CloudFormation console in your AWS account. Check the selected region and change it if needed. 
-- Select **Upload a template file** and upload the downloaded CloudFormation template, click **Next** 
-- Enter the stack name, for example `mlops-with-sagemaker-mlflow`, click **Next**
-- Leave all defaults on this pane, click **Next**
-- Select **I acknowledge that AWS CloudFormation might create IAM resources**, click **Submit**
+AWS CloudFormation 콘솔을 엽니다. 링크는 AWS 계정의 AWS CloudFormation 콘솔을 엽니다. 선택한 리전을 확인하고 필요한 경우 변경하세요.
+- 템플릿 파일 업로드를 선택하고 다운로드한 CloudFormation 템플릿을 업로드한 후 다음을 클릭합니다
+- 스택 이름을 입력합니다(예: `mlops-with-sagemaker-mlflow`). 다음을 클릭합니다
+- 이 창에서 모든 기본값을 그대로 두고 다음을 클릭합니다
+- AWS CloudFormation이 IAM 리소스를 생성할 수 있음을 승인합니다를 선택하고 제출을 클릭합니다
 
 ![](img/cfn-ack.png)
 
-On the **CloudFormation** pane, choose **Stacks**. It takes about 15 minutes for the stack to be created. When the stack is created, the status of the stack changes from `CREATE_IN_PROGRESS` to `CREATE_COMPLETE`. 
+CloudFormation 창에서 스택을 선택합니다. 스택이 생성되는 데 약 15분이 걸립니다. 스택이 생성되면 스택 상태가 `CREATE_IN_PROGRESS`에서 `CREATE_COMPLETE`로 변경됩니다.
 
 ![](img/cfn-stack.png)
 
-### Start SageMaker Studio
-After signing into the AWS account, follow [Launch Amazon SageMaker Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-launch.html) instructions to open Studio.
+### SageMaker Studio 시작
+AWS 계정에 로그인한 후 Amazon SageMaker Studio 시작 지침을 따라 Studio를 엽니다.
 
-Here are the instructions if you are in an AWS-led workshop event:
+AWS 주도 워크샵 이벤트에 참여하는 경우 다음 지침을 따르세요:
 
-1. First navigate to Amazon SageMaker console, you can do this by simply starting to type `SageMaker` in the search box at the top. 
+1. 먼저 Amazon SageMaker 콘솔로 이동합니다. 상단의 검색 상자에 `SageMaker`를 입력하면 됩니다.
 
    ![](img/aws-console-sagemaker.png)
 
-2. On the left in the `Applications and IDEs` section select Studio
-3. In the `Get started` box, make sure the studio-user-xxxxxxxx is selected and select `Open studio`. Now SageMaker Studio UI opens in a new browser tab and you're redirected to that window.
+2. 왼쪽의 `Applications and IDEs` 섹션에서 Studio를 선택합니다
+3. `Get started` 상자에서 studio-user-xxxxxxxx가 선택되어 있는지 확인하고 `Open studio`를 선택합니다. 이제 SageMaker Studio UI가 새 브라우저 탭에서 열리고 해당 창으로 리디렉션됩니다.
 
    ![](img/launch-studio.png)
 
-4. Optionally take the quick tour of the SageMAker Studio interface by selecting the `Take quick tour button` or select `Skip Tour for now``
-5. Accept or Decline the cookie preferences based on your preference
+4. 선택적으로 `Take quick tour button`을 선택하여 SageMaker Studio 인터페이스의 빠른 둘러보기를 하거나 `Skip Tour for now`를 선택합니다
+5. 선호도에 따라 쿠키 기본 설정을 수락하거나 거부합니다
 
-### Open JupyterLab space
-You use a JupyterLab space as our IDE for this workshop. 
+### JupyterLab 스페이스 열기
+이 워크샵에서는 JupyterLab 스페이스를 IDE로 사용합니다.
 
-1. To launch a JupyterLab space, select the `JupyterLab` app in the top left
+1. JupyterLab 스페이스를 시작하려면 왼쪽 상단의 `JupyterLab` 앱을 선택합니다
 
    ![JupyterLab selector](img/jupyterlab-app.png)
    
-2. Each application in SageMaker studio gets its own space. Spaces are used to manage the storage and resource needs of each application. If you're participating in an AWS-led workshop or used the provided CloudFormation template, the required space is already created for you, otherwise you must create a new JupyterLab space as described in the [the Developer Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-jl-user-guide.html) or re-use an existing one
+2. SageMaker Studio의 각 애플리케이션은 자체 스페이스를 갖습니다. 스페이스는 각 애플리케이션의 스토리지 및 리소스 요구 사항을 관리하는 데 사용됩니다. AWS 주도 워크샵에 참여하거나 제공된 CloudFormation 템플릿을 사용한 경우 필요한 스페이스가 이미 생성되어 있습니다. 그렇지 않으면 개발자 가이드에 설명된 대로 새 JupyterLab 스페이스를 생성하거나 기존 스페이스를 재사용해야 합니다
 
-3. Run the space by selecting the run button on the right. This process can take a few seconds.
+3. 오른쪽의 실행 버튼을 선택하여 스페이스를 실행합니다. 이 프로세스는 몇 초가 걸릴 수 있습니다.
 
    ![JupyterLab selector](img/space-run.png)
 
-4. Once the space is running select `Open` to navigate to the JupyterLab application. 
+4. 스페이스가 실행되면 `Open`을 선택하여 JupyterLab 애플리케이션으로 이동합니다.
 
-### Start the workshop
-If you're participating in an AWS-led workshop or used the provided CloudFormation template, the workshop content is cloned on the space EBS volume automatically, no action required from you. If you use your own domain and user profile or created a domain via AWS Console UI, follow the instructions in the next section **Download notebooks into your JupyterLab space** to clone the content.
+### 워크샵 시작
+AWS 주도 워크샵에 참여하거나 제공된 CloudFormation 템플릿을 사용한 경우 워크샵 콘텐츠가 스페이스 EBS 볼륨에 자동으로 복제되므로 별도의 작업이 필요하지 않습니다. 자체 도메인과 사용자 프로필을 사용하거나 AWS 콘솔 UI를 통해 도메인을 생성한 경우 다음 섹션 JupyterLab 스페이스에 노트북 다운로드의 지침을 따라 콘텐츠를 복제하세요.
 
-The public GitHub repository [MLOps with SageMaker and MLFlow](https://github.com/aws-samples/mlops-sagemaker-mlflow) contains all source code.
+공개 GitHub 저장소 MLOps with SageMaker and MLFlow에는 모든 소스 코드가 포함되어 있습니다.
 
-#### Download notebooks into your JupyterLab space
-You only need to clone the notebooks into your space if you use your own domain and user profile. To do this select `Terminal` in the JupyterLab Launcher window or select **File** > **New** > **Terminal** to open up a terminal and run the `git clone`:
+#### JupyterLab 스페이스에 노트북 다운로드
+자체 도메인과 사용자 프로필을 사용하는 경우에만 노트북을 스페이스에 복제하면 됩니다. 이렇게 하려면 JupyterLab Launcher 창에서 `Terminal`을 선택하거나 **File** > **New** > **Terminal**을 선택하여 터미널을 열고 `git clone`을 실행합니다:
 
 ```sh
 git clone https://github.com/aws-samples/mlops-sagemaker-mlflow
 ```
 
-This will clone the repository into the local JupyterLab file system.
+이렇게 하면 저장소가 로컬 JupyterLab 파일 시스템에 복제됩니다.
 
-#### Open and execute a setup notebook
-As the final preparatory step, make sure to run and execute the `00-start-here.ipynb` notebook. To do this
+#### 설정 노트북 열기 및 실행
+마지막 준비 단계로 `00-start-here.ipynb` 노트북을 실행해야 합니다. 이렇게 하려면
 
-1. In the file browser open the `mlops-sagemaker-mlflow` folder by double clicking it
-2. Open `00-start-here.ipynb` notebook and follow the instructions in the notebook
+1. 파일 브라우저에서 `mlops-sagemaker-mlflow` 폴더를 더블 클릭하여 엽니다
+2. `00-start-here.ipynb` 노트북을 열고 노트북의 지침을 따릅니다
 
 ![](img/mlops-jupyterlab-landing.jpg)
 
-Note: we recommend you read and then execute each cell by using the `Shift + Enter`command.
+참고: 각 셀을 읽은 후 `Shift + Enter` 명령을 사용하여 실행하는 것을 권장합니다.
 
-## How to use this workshop
-You can do this workshop in two ways:
-- Go through the provided notebooks, execute code cells sequentially, and follow the instructions and execution flow
-- Write your own code with hands-on assignments and exercises
+## 이 워크샵 사용 방법
+이 워크샵은 두 가지 방법으로 진행할 수 있습니다:
+- 제공된 노트북을 살펴보고 코드 셀을 순차적으로 실행하며 지침과 실행 흐름을 따릅니다
+- 실습 과제와 연습을 통해 직접 코드를 작성합니다
 
-The following diagram shows the possible flows of the workshop:
+다음 다이어그램은 워크샵의 가능한 흐름을 보여줍니다:
 
 ![](design/workshop-flow.drawio.svg)
 
-### Execution mode
-Use this mode if you're not familiar with Python programming and new to Jupyter notebooks. You follow each notebook `00-...`, `01-...`, ..., `06-...`and execute all code cells with `Shift` + `Enter`. The given instructions explain what code is doing and why. You need about two and half hours to run through all code cells in all notebooks. 
-All notebooks and all code cells are idempotent. Make sure you run all code cells sequentially, top to bottom.
+### 실행 모드
+Python 프로그래밍에 익숙하지 않고 Jupyter 노트북을 처음 사용하는 경우 이 모드를 사용하세요. 각 노트북 `00-...`, `01-...`, ..., `06-...`을 따라가며 `Shift` + `Enter`로 모든 코드 셀을 실행합니다. 제공된 지침은 코드가 무엇을 하고 왜 하는지 설명합니다. 모든 노트북의 모든 코드 셀을 실행하는 데 약 2시간 30분이 필요합니다.
+모든 노트북과 모든 코드 셀은 멱등성을 가집니다. 모든 코드 셀을 위에서 아래로 순차적으로 실행해야 합니다.
 
-### Assignment mode
-Use this mode if you have experience working with Jupyter notebooks and would like to write own code to have a deeper hands-on understanding of SageMaker features and SageMaker Python SDK.
-Each foundational instruction notebook `00-...`, `01-...`, ..., `06-...` in the workshop root folder has a corresponding "assignment" notebook with exercises in the `assignments` folder. First, go through the instructions in the root folder notebook and then complete the exercises in the corresponding assignment notebook. The notebooks are mapped as follows:
+### 과제 모드
+Jupyter 노트북 작업 경험이 있고 SageMaker 기능과 SageMaker Python SDK에 대한 더 깊은 실습 이해를 위해 직접 코드를 작성하려는 경우 이 모드를 사용하세요.
+워크샵 루트 폴더의 각 기본 지침 노트북 `00-...`, `01-...`, ..., `06-...`에는 `assignments` 폴더에 연습이 포함된 해당 "과제" 노트북이 있습니다. 먼저 루트 폴더 노트북의 지침을 살펴본 다음 해당 과제 노트북의 연습을 완료하세요. 노트북은 다음과 같이 매핑됩니다:
 - `00-start-here` > `./assignments/00-assignment-setup`
 - `01-idea-development` > `./assignments/01-assignment-local-development`
 - `02-sagemaker-containers` > `./assignments/02-assignment-sagemaker-containers`
@@ -160,43 +160,42 @@ Each foundational instruction notebook `00-...`, `01-...`, ..., `06-...` in the 
 - `05-deploy` > `./assignments/05-assignment-deploy`
 - `06-monitoring` > `./assignments/06-assignment-monitoring`
 
-## Clean-up
-❗ You don't need to perform a clean-up if you run an AWS-instructor led workshop.
+## 정리
+❗ AWS 강사 주도 워크샵을 실행하는 경우 정리를 수행할 필요가 없습니다.
 
-To avoid charges, you must remove all project-provisioned and generated resources from your AWS account. 
+요금이 부과되지 않도록 AWS 계정에서 프로젝트에서 프로비저닝하고 생성한 모든 리소스를 제거해야 합니다.
 
-First, run all steps in the provided [clean-up notebook](99-clean-up.ipynb).
-Second, if you used the AWS Console to provision a domain for this workshop, and don't need the domain, you can delete the domain by following [this instructions](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-delete-domain.html). 
+먼저 제공된 정리 노트북의 모든 단계를 실행합니다.
+둘째, AWS 콘솔을 사용하여 이 워크샵용 도메인을 프로비저닝했고 도메인이 필요하지 않은 경우 이 지침을 따라 도메인을 삭제할 수 있습니다.
 
-If you provisioned a domain use a CloudFormation template, you can delete the CloudFormation stack in the AWS console.
+CloudFormation 템플릿을 사용하여 도메인을 프로비저닝한 경우 AWS 콘솔에서 CloudFormation 스택을 삭제할 수 있습니다.
 
-If you provisioned a new VPC for the domain, go to the [VPC console](https://console.aws.amazon.com/vpc/home?#vpcs) and delete the provisioned VPC.
+도메인용으로 새 VPC를 프로비저닝한 경우 VPC 콘솔로 이동하여 프로비저닝된 VPC를 삭제합니다.
 
-## Dataset
-This example uses a synthetic game behaviour dataset generated using this [repository](https://github.com/awslabs/players-behaviors-dataset-generator) from AWS Labs.
+## 데이터셋
+이 예제는 AWS Labs의 이 저장소를 사용하여 생성된 합성 게임 행동 데이터셋을 사용합니다.
 
-## Resources
-The following list presents some useful hands-on resources to help you to get started with ML development on Amazon SageMaker.
+## 리소스
+다음 목록은 Amazon SageMaker에서 ML 개발을 시작하는 데 도움이 되는 유용한 실습 리소스를 제공합니다.
 
-- [Get started with Amazon SageMaker](https://aws.amazon.com/sagemaker/getting-started/)
-- [Deep Learning MLOps workshop with Amazon SageMaker](https://catalog.us-east-1.prod.workshops.aws/workshops/47906c57-854e-4c73-abdb-6b49fe364370/en-US)
-- [Amazon SageMaker 101 workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/0c6b8a23-b837-4e0f-b2e2-4a3ffd7d645b/en-US)
-- [Amazon SageMaker 101 workshop code repository](https://github.com/aws-samples/sagemaker-101-workshop)
-- [Amazon SageMaker Immersion Day](https://catalog.us-east-1.prod.workshops.aws/workshops/63069e26-921c-4ce1-9cc7-dd882ff62575/en-US)
-- [Amazon SageMaker End to End Workshop](https://github.com/aws-samples/sagemaker-end-to-end-workshop)
-- [Amazon SageMaker workshop with BYOM and BYOC examples](https://sagemaker-workshop.com/)
-- [End to end Machine Learning with Amazon SageMaker](https://github.com/aws-samples/amazon-sagemaker-build-train-deploy)
-- [SageMaker MLOps Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/1bb7ba03-e533-464f-8726-91a74513b1a1/en-US)
-- [Amazon SageMaker MLOps Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/7acdc7d8-0ac0-44de-bd9b-e3407147a59c/en-US)
-- [A curated list of awesome references for Amazon SageMaker](https://github.com/aws-samples/awesome-sagemaker)
-- [AWS Multi-Account Data & ML Governance Workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/367f5c92-0764-4959-9279-e6f105f0c670/en-US)
-- [Amazon SageMaker MLOps - from idea to production](https://catalog.workshops.aws/mlops-from-idea-to-production/en-US)
+- Get started with Amazon SageMaker
+- Deep Learning MLOps workshop with Amazon SageMaker
+- Amazon SageMaker 101 workshop
+- Amazon SageMaker 101 workshop code repository
+- Amazon SageMaker Immersion Day
+- Amazon SageMaker End to End Workshop
+- Amazon SageMaker workshop with BYOM and BYOC examples
+- End to end Machine Learning with Amazon SageMaker
+- SageMaker MLOps Workshop
+- Amazon SageMaker MLOps Workshop
+- A curated list of awesome references for Amazon SageMaker
+- AWS Multi-Account Data & ML Governance Workshop
+- Amazon SageMaker MLOps - from idea to production
 
+## 보안
 
-## Security
+자세한 내용은 CONTRIBUTING을 참조하세요.
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+## 라이선스
 
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+이 라이브러리는 MIT-0 라이선스에 따라 라이선스가 부여됩니다. LICENSE 파일을 참조하세요.
